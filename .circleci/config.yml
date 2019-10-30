@@ -1,0 +1,27 @@
+# Minmum settings
+# CircleCI version
+version: 2.1
+
+# Unit of CI flow
+# Write jobs setting
+# The following sample runs tests.
+jobs:
+  test:
+    # Use official Docker image
+    docker:
+      - image: circleci/ruby:2.6.3
+    # root dir
+    working_directory: ~/repo
+    # Use latest code
+    steps:
+      - checkout
+      - run:
+          name: Run test
+          command: ruby test/sum_test.rb
+
+# The order of CI flows
+workflows:
+  version: 2
+  workflows:
+    jobs:
+      - test
